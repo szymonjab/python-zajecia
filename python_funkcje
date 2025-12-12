@@ -1,0 +1,51 @@
+def fibonacci_numbers(n):
+    '''
+    zwraca n liczb Fibonacciego
+    zwraca listę!
+    '''
+    wynik = []
+    a, b = 0, 1
+    while len(wynik) < n:
+        wynik.append(a)
+        a, b = b, a + b
+    return wynik
+
+fib5 = fibonacci_numbers(5)
+print(fib5)
+
+#################
+
+def mnozenie_listy(lista):
+    wynik = 1
+    for i in lista:
+        wynik *= i
+    return wynik
+
+przyklad = [1, 2, -8]
+
+print(mnozenie_listy(przyklad))
+#######3
+
+def maximum(lista):
+    return sorted(lista)[-1]
+
+lista1 = [1, 3, 2, 8, 2, 8.2, 1]
+
+print(maximum(lista1))  # nasza funkcja
+print(max(lista1))  # funkcja wbudowana
+
+
+#######
+
+ciag_znakow = 'google.com'
+
+def czestotliwosc_znakow(ciag_znakow):
+    czestotliwosc = {}  # lub dict()
+    for znak in ciag_znakow:
+        if znak in czestotliwosc.keys():
+            czestotliwosc[znak] += 1
+        else:
+            czestotliwosc[znak] = 1
+    return czestotliwosc
+
+print(czestotliwosc_znakow(ciag_znakow))

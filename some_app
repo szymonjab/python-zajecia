@@ -1,0 +1,15 @@
+import pytest
+from some_app_module import UserManager
+
+@pytest.fixture
+def user_manager_fixture():
+    return UserManager()
+
+def test_add_user(user_manager_fixture):
+    user_manager_fixture.add_user("john_doe", "john@example.com")
+    assert user_manager_fixture.get_user("john_doe") == "john@example.com"
+
+def test_add_duplicate_user(user_manager_fixture):
+    user_manager_fixture.add_user("john_doe", "john@example.com")
+    with pytest.raises(ValueError):
+        user_manager_fixture.add_user("john_doe", "another@example.com")

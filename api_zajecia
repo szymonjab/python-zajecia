@@ -1,0 +1,48 @@
+import requests
+import pytest
+
+BASE_URL = "https://fakestoreapi.com"
+product_2_test_data = {
+    "title": "Mens Casual Premium Slim Fit T-Shirts ",
+    "price": 22.3,
+    "category": "men's clothing",
+}
+
+new_product_test_data = {
+    "title": "Test Product",
+    "description": "Product for testing",
+    "category": "electronics",
+    "image": "https://test.jpg"
+}
+
+
+def test_get_product_id_2():
+    response = requests.get(url=f'{BASE_URL}/products/2')
+    response_in_json_format = response.json()
+
+    title = response_in_json_format['title']
+    price = response_in_json_format['price']
+    category = response_in_json_format['category']
+
+    assert title == product_2_test_data['title']
+    assert price == product_2_test_data['price']
+    assert category == product_2_test_data['category']
+    
+
+def test_add_a_new_product():
+    body = {
+        "title": product_test_data['title'],
+        "description": product_test_data['description'],
+        "category": product_test_data['category'],
+        "image": product_test_data['image']
+    }
+
+    response = requests.post(url=f'{BASE_URL}/products', json=body)
+    response_in_json_format = response.json()
+
+    assert response.status_code == 201
+    assert response_in_json_format['id'] == 21
+    assert response_in_json_format['title'] == product_test_data['title']
+    assert response_in_json_format['description'] == product_test_data['description']
+    assert response_in_json_format['category'] == product_test_data['category']
+    assert response_in_json_format['image'] == product_test_data['image']

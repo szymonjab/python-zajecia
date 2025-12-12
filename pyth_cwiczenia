@@ -1,0 +1,67 @@
+while True:
+    try:
+        a = int(input('Podaj liczbę '))
+    except ValueError:
+        print('Nie podano liczby!')
+    else:
+        break
+
+if a % 2 == 0:
+    print(f'Liczba {a} jest parzysta.')
+else:
+    print(f'Liczba {a} jest nieparzysta.')
+
+####
+
+lista = []
+for i in range(11, 101):
+    if i % 7 != 0:
+        lista.append(i)
+
+print(sorted(lista, reverse=True))
+print(lista[::-1])
+print(sorted([liczba for liczba in range(11, 101) if liczba % 7 != 0], reverse=True))
+
+
+######3
+
+
+x = int(input("podaj pierwsza liczbe:"))
+y = int(input("podaj drugą liczbe:"))
+zb_x = []
+zb_y = []
+for i in range(x):
+    if x % (i + 1) == 0:
+        zb_x.append(i + 1)
+for k in range(y):
+    if y % (k + 1) == 0:
+        zb_y.append(k + 1)
+print(zb_x)
+print(zb_y)
+print()
+print(sorted(list(set(zb_x) & set(zb_y)))[-1])
+
+###
+
+a = int(input('Podaj liczbę:'))
+b = int(input('Podaj liczbę:'))
+
+if a != b:
+    maximum = min(a, b)  # potencjalnie największy wspólny dzielnik
+    nwd = 1
+    for i in range(1, maximum + 1):
+        if a % i == 0 and b % i == 0:
+            nwd = i
+else:
+    nwd = a
+
+print(f'Największy wspólny dzielnik dla liczb {a} i {b} to {nwd}')
+
+#####
+liczba = int(input('Podaj liczbę: '))
+suma = 0
+
+for i in range(1, liczba+1):
+    suma += i
+
+print(f'Suma to: {suma}')
